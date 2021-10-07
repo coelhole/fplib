@@ -3,13 +3,9 @@ unit _array;
 interface
 
 uses
-  sysUtils,
-  _boolean;
+  sysUtils;
 
 type
-  booleanarr=array of boolean;
-  boolarr=array of Bool;
-
   shortarr = array of shortint;
   smallarr = array of smallint;
   wordarr = array of word;
@@ -69,17 +65,6 @@ ArrayOfString=specialize ArrayOf<string>;
 ArrayOfAnsiString=specialize ArrayOf<ansiString>;
 ArrayOfWideString=specialize ArrayOf<wideString>;
 
-ArrayOfBool=specialize ArrayOf<Bool>;
-
-operator :=(barr:booleanarr)arrobj:boolarr;
-operator :=(arrobj:boolarr)barr:booleanarr;
-
-operator :=(barr:booleanarr)obj:ArrayOfBool;
-operator :=(obj:ArrayOfBool)barr:booleanarr;
-
-operator :=(arrobj:boolarr)obj:ArrayOfBool;
-operator :=(obj:ArrayOfBool)arrobj:boolarr;
-
 implementation
 
 uses
@@ -127,66 +112,6 @@ begin
   except
     result:=-1;
   end;
-end;
-
-operator :=(barr:booleanarr)arrobj:boolarr;
-var
-  i,l:longint;
-begin
-  l:=length(barr);
-  setLength(arrobj,l);
-  for i:=0 to l-1 do
-    arrobj[i]:=Bool.create(barr[i]);
-end;
-
-operator :=(arrobj:boolarr)barr:booleanarr;
-var
-  i,l:longint;
-begin
-  l:=length(arrobj);
-  setLength(barr,l);
-  for i:=0 to l-1 do
-    barr[i]:=arrobj[i].booleanValue;
-end;
-
-operator :=(barr:booleanarr)obj:ArrayOfBool;
-var
-  i,l:longint;
-begin
-  l:=length(barr);
-  obj:=ArrayOfBool.create(l);
-  for i:=0 to l-1 do
-    obj.element[i]:=Bool.create(barr[i]);
-end;
-
-operator :=(obj:ArrayOfBool)barr:booleanarr;
-var
-  i,l:longint;
-begin
-  l:=obj.len;
-  setLength(barr, l);
-  for i:=0 to l-1 do
-    barr[i]:=obj.element[i].booleanValue;
-end;
-
-operator :=(arrobj:boolarr)obj:ArrayOfBool;
-var
-  i,l:longint;
-begin
-  l:=length(arrobj);
-  obj:=ArrayOfBool.create(l);
-  for i:=0 to l-1 do
-    obj.element[i]:=arrobj[i];
-end;
-
-operator :=(obj:ArrayOfBool)arrobj:boolarr;
-var
-  i,l:longint;
-begin
-  l:=obj.len;
-  setLength(arrobj,l);
-  for i:=0 to l-1 do
-    arrobj[i]:=obj.element[i];
 end;
 
 end.

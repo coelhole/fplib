@@ -3,7 +3,7 @@ unit _boolean;
 interface
 
 uses
-  sysUtils;
+  sysUtils, _array;
 
 const
   BOOLEAN_BYTE_SIZE=sizeOf(boolean);
@@ -14,6 +14,10 @@ const
   BOOLEAN_TRUE_INTEGER_VALUE=1;
 
 type
+  Bool=class;
+  ArrayOfBool=specialize ArrayOf<Bool>;
+  booleanarr=array of boolean;
+  boolarr=array of Bool;
   UnaryLogicalOperator=function(b:boolean):boolean;
   BinaryLogicalOperator=function(b1,b2:boolean):boolean;
 
@@ -68,6 +72,15 @@ end;
 
 operator :=(b:boolean)obj:Bool;
 operator :=(obj:Bool)b:boolean;
+
+operator :=(barr:booleanarr)arrobj:boolarr;
+operator :=(arrobj:boolarr)barr:booleanarr;
+
+operator :=(barr:booleanarr)obj:ArrayOfBool;
+operator :=(obj:ArrayOfBool)barr:booleanarr;
+
+operator :=(arrobj:boolarr)obj:ArrayOfBool;
+operator :=(obj:ArrayOfBool)arrobj:boolarr;
 
 implementation
 
@@ -286,6 +299,66 @@ end;
 operator :=(obj:Bool)b:boolean;
 begin
   b:=obj.booleanValue;
+end;
+
+operator :=(barr:booleanarr)arrobj:boolarr;
+var
+  i,l:longint;
+begin
+  l:=length(barr);
+  setLength(arrobj,l);
+  for i:=0 to l-1 do
+    arrobj[i]:=Bool.create(barr[i]);
+end;
+
+operator :=(arrobj:boolarr)barr:booleanarr;
+var
+  i,l:longint;
+begin
+  l:=length(arrobj);
+  setLength(barr,l);
+  for i:=0 to l-1 do
+    barr[i]:=arrobj[i].booleanValue;
+end;
+
+operator :=(barr:booleanarr)obj:ArrayOfBool;
+var
+  i,l:longint;
+begin
+  l:=length(barr);
+  obj:=ArrayOfBool.create(l);
+  for i:=0 to l-1 do
+    obj.element[i]:=Bool.create(barr[i]);
+end;
+
+operator :=(obj:ArrayOfBool)barr:booleanarr;
+var
+  i,l:longint;
+begin
+  l:=obj.len;
+  setLength(barr, l);
+  for i:=0 to l-1 do
+    barr[i]:=obj.element[i].booleanValue;
+end;
+
+operator :=(arrobj:boolarr)obj:ArrayOfBool;
+var
+  i,l:longint;
+begin
+  l:=length(arrobj);
+  obj:=ArrayOfBool.create(l);
+  for i:=0 to l-1 do
+    obj.element[i]:=arrobj[i];
+end;
+
+operator :=(obj:ArrayOfBool)arrobj:boolarr;
+var
+  i,l:longint;
+begin
+  l:=obj.len;
+  setLength(arrobj,l);
+  for i:=0 to l-1 do
+    arrobj[i]:=obj.element[i];
 end;
 
 initialization
