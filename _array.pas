@@ -43,7 +43,6 @@ generic ArrayOf<T> = class
     property element[index:longint]:T read getElement write setElement;
 end;
 
-ArrayOfBoolean=specialize ArrayOf<boolean>;
 ArrayOfByte=specialize ArrayOf<byte>;
 ArrayOfShortint=specialize ArrayOf<shortint>;
 ArrayOfSmallint=specialize ArrayOf<smallint>;

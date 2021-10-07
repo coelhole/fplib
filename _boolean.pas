@@ -15,9 +15,10 @@ const
 
 type
   Bool=class;
-  ArrayOfBool=specialize ArrayOf<Bool>;
   booleanarr=array of boolean;
   boolarr=array of Bool;
+  ArrayOfBoolean=specialize ArrayOf<boolean>;
+  ArrayOfBool=specialize ArrayOf<Bool>;
   UnaryLogicalOperator=function(b:boolean):boolean;
   BinaryLogicalOperator=function(b1,b2:boolean):boolean;
 
