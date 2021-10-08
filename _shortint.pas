@@ -27,57 +27,57 @@ implementation
 
 function compare(const s1,s2:shortint):longint;
 begin
-	result:=s1-s2;
+  result:=s1-s2;
 end;
 
 function equals(const s1,s2:shortint):boolean;
 begin
-	result:=s1=s2;
+  result:=s1=s2;
 end;
 
 function toString(const s:shortint):string;
 begin
-	result:=intToStr(s);
+  result:=intToStr(s);
 end;
 
 function smallintValue(const s:shortint):smallint;
 begin
-	result:=s;
+  result:=s;
 end;
 
 function longintValue(const s:shortint):longint;
 begin
-	result:=s;
+  result:=s;
 end;
 
 function int64Value(const s:shortint):int64;
 begin
-	result:=s;
+  result:=s;
 end;
 
 function singleValue(const s:shortint):single;
 begin
-	result:=s;
+  result:=s;
 end;
 
 function doubleValue(const s:shortint):double;
 begin
-	result:=s;
+  result:=s;
 end;
 
 function extendedValue(const s:shortint):extended;
 begin
-	result:=s;
+  result:=s;
 end;
 
 function compValue(const s:shortint):comp;
 begin
-	result:=s;
+  result:=s;
 end;
 
 function currencyValue(const s:shortint):currency;
 begin
-	result:=s;
+  result:=s;
 end;
 
 end.
