@@ -24,9 +24,9 @@ type
 
 function biimpl(const b1,b2:boolean):boolean;
 function boolToInt(b:boolean):byte;
-function compare(const b1,b2:boolean):longint;
+function compare(const b1,b2:boolean):longint;overload;
 function commut(const binaryConnective:BinaryLogicalOperator;const arg1,arg2:boolean):boolean;
-function equals(const b1,b2:boolean):boolean;
+function equals(const b1,b2:boolean):boolean;overload;
 function eval(const binaryConnective:BinaryLogicalOperator;const arg1,arg2:boolean):boolean;overload;
 function eval(const unaryOperator:UnaryLogicalOperator;const arg:boolean):boolean;overload;
 function identity(const b:boolean):boolean;
@@ -39,7 +39,7 @@ function logicalOr(const b1,b2:boolean):boolean;
 function logicalXor(const b1,b2:boolean):boolean;
 function nand(const b1,b2:boolean):boolean;
 function nor(const b1,b2:boolean):boolean;
-function toString(const b:boolean):string;
+function toString(const b:boolean):string;overload;
 function parseBoolean(const booleanString:string):boolean;
 function xnor(const b1,b2:boolean):boolean;
 
