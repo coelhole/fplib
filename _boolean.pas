@@ -12,6 +12,7 @@ const
   BOOLEAN_TRUE_STRING='true';
   BOOLEAN_FALSE_INTEGER_VALUE=0;
   BOOLEAN_TRUE_INTEGER_VALUE=1;
+  BOOLEAN_VALUES:array[0..1]of boolean=(false,true);
 
 type
   Bool=class;
